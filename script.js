@@ -7,11 +7,14 @@ let time = 0
 let score = 0
 let idSetInterval = null
 startBtn.addEventListener('click', handlerStartBtn)
+
 function handlerStartBtn(e) {
     e.preventDefault()
     display[0].classList.add('up')
 }
+
 timeController.addEventListener('click', handlerTimeController)
+
 function handlerTimeController(e) {
     if (e.target.classList.contains('time-list__button')) {
         display[1].classList.add('up')
@@ -19,7 +22,9 @@ function handlerTimeController(e) {
         startGame()
     }
 }
+
 boardEl.addEventListener('click', handlerCircleClick)
+
 function handlerCircleClick(e) {
     if (e.target.classList.contains('circle')) {
         score++
@@ -27,31 +32,40 @@ function handlerCircleClick(e) {
         createRandomCircle()
     }
 }
+
 function createRandomCircle() {
     const circle = document.createElement('div')
     circle.classList.add('circle')
     const size = getRandomNum(5, 50)
     const {width, height} = boardEl.getBoundingClientRect()
     circle.style.width = circle.style.height = size + 'px'
-    circle.style.background = 'RED'
+    circle.style.background = getRandomColor()
     const x = getRandomNum(0, width - size)
     const y = getRandomNum(0, height - size)
     circle.style.left = x + 'px'
     circle.style.top = y + 'px'
     boardEl.append(circle)
 }
+
 function getRandomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
+
+function getRandomColor() {
+    return `rgb(${getRandomNum(0, 255)}, ${getRandomNum(5, 255)},${getRandomNum(0, 255)})`
+}
+
 function setTime(timeGame) {
     timeEl.innerHTML = `00:${timeGame}`
 }
+
 function startGame() {
 
     setInterval(decTime, 1000)
     createRandomCircle()
     setTime(time)
 }
+
 function decTime() {
     if (time === 0) {
         finishGame()
@@ -63,8 +77,9 @@ function decTime() {
         setTime(current)
     }
 }
+
 function finishGame() {
-    timeEl.parentNode.style.display='none'
+    timeEl.parentNode.style.display = 'none'
     clearInterval(idSetInterval)
     boardEl.innerHTML = `<p> Ваш счёт: ${score}</p>`
 }
