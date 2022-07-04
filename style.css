@@ -29,6 +29,7 @@ html {
     height: 100vh;
     transition: margin 0.5s ease-in-out;
     background: linear-gradient(black, #000047);
+
 }
 
 .display.up {
@@ -77,6 +78,7 @@ html {
 }
 
 .board {
+    margin: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,14 +86,14 @@ html {
     width: 500px;
     height: 500px;
     background: black;
-    box-shadow: -8px -8px 20px red, 10px 7px 20px red;
+    box-shadow: -8px -8px 20px crimson, 10px 7px 20px red;
     border-radius: 30px;
 }
 
 .circle {
     width: 50px;
     height: 50px;
-    background:red;
+    background: crimson;
     position: absolute;
     border-radius: 50%;
     cursor: pointer;
@@ -99,3 +101,60 @@ html {
     left: 0;
 }
 
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 100px;
+    width: 500px;
+    height: 500px;
+    background: black;
+    opacity: .3;
+    border-radius: 30px;
+}
+
+.modal.on {
+    display: flex;
+    margin: 50px;
+    position: absolute;
+    z-index: 25;
+}
+
+.modal-container {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-button {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    width: 90px;
+    border-radius: 0.5rem;
+}
+
+.modal-button:hover {
+    color: crimson;
+    border: 2px solid
+}
+
+.modal-close {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: crimson;
+    border: 2px solid white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    width: 25px;
+    border-radius: 0.5rem;
+}
+.modal-close:hover {
+    color: crimson;
+    border: 2px solid
+}

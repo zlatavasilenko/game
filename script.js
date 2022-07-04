@@ -3,9 +3,16 @@ const display = document.querySelectorAll('.display')
 const timeController = document.getElementById('time-list')
 const timeEl = document.getElementById('time')
 const boardEl = document.getElementById('board')
+const modal = document.getElementById('modal')
+const restart = document.getElementById('restart')
+const exit = document.getElementById('exit')
+const closeBtn = document.getElementById('modal-close')
+
+
 let time = 0
 let score = 0
 let idSetInterval = null
+
 startBtn.addEventListener('click', handlerStartBtn)
 
 function handlerStartBtn(e) {
@@ -81,8 +88,49 @@ function decTime() {
 function finishGame() {
     timeEl.parentNode.style.display = 'none'
     clearInterval(idSetInterval)
-    boardEl.innerHTML = `<p> Ваш счёт: ${score}</p>`
+    boardEl.innerHTML = `<p> score:${score}</p>`
+    modal.classList.add('on')
 }
 
 
+/*
+closeBtn.addEventListener('click', handlercloseBtn)
+function handlercloseBtn(e) {
+    modal.classList.remove('on')
+}*/
 
+
+exit.addEventListener('click', handlerExit)
+function handlerExit(e) {
+    location.reload()
+}
+
+
+/*
+restart.addEventListener('click', handlerRestart)
+
+function handlerRestart(e) {
+    restartGame()
+
+}
+
+function restartGame() {
+
+    setInterval(decTimeRestart, 1000)
+    createRandomCircle()
+    setTime(time)
+}
+
+/*
+function decTimeRestart() {
+    if (time === 0) {
+        finishGame()
+    } else {
+        let current = --time
+        if (current < 10) {
+            current = `0${current}`
+        }
+        setTime(current)
+    }
+}
+ */
